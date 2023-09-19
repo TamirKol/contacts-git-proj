@@ -4,17 +4,14 @@ import { HomePage } from "./pages/HomePage.jsx"
 
 export function App() {
     return (
- 
-            <Router>
-                <section className="main-layout app">
-                    <main>
-                        <Routes>
-                            <Route element={<HomePage />} path="/" />
-                           
-                        </Routes>
-                    </main>
-                </section>
-            </Router>
- 
+        <Router>
+            <section className="main-layout app">
+                <main>
+                    <Routes>
+                        <Route element={<HomePage />} path="/" />
+                    </Routes>
+                </main>
+            </section>
+        </Router>
     )
 }
