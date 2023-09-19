@@ -1,0 +1,32 @@
+/* .todo-preview {
+    text-align: center;
+    padding: 0.3em;
+    display: flex;
+    flex-direction: column;
+}
+.todo-preview h4{
+    text-transform: capitalize;
+    color: black;
+}
+
+.todo-preview img {
+    max-width: 100px;
+} */
+
+.todo-preview {
+    margin-inline-end: 1em;
+    font-size: 1.5rem;
+}
+
+.todo-preview span {
+    cursor: pointer;
+}
+
+.todo-preview p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.todo-preview .done {
+    text-decoration: line-through;
+} 

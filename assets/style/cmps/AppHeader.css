@@ -1,0 +1,30 @@
+.app-header {
+  background-color: var(--clr1);
+  color: var(--clr1bg);
+  padding: 1em;
+}
+
+.app-header .progress-bar {
+  width: 30%;
+  height: 20px;
+  border-radius: 2em;
+  background-color: #ccc;
+  color: black;
+}
+.app-header .progress-bar span {
+  margin-inline-start: 1em;
+}
+
+.app-header .progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 2em;
+  background-color: #4caf50;
+  transition: width 0.3s;
+}
+
+@media(max-width: 720px) {
+  .app-header {
+    color: var(--clr2bg);
+  }
+}
