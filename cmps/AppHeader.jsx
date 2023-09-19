@@ -6,8 +6,8 @@ import { logout } from '../store/actions/user.actions.js'
 import { LoginSignup } from './LoginSignUp.jsx'
 
 export function AppHeader() {
-    const todoCount = useSelector(storeState => storeState.todoModule.todoCount)
-    const doneCount = useSelector(storeState => storeState.todoModule.doneCount)
+    const contactCount = useSelector(storeState => storeState.contactModule.contactCount)
+    const doneCount = useSelector(storeState => storeState.contactModule.doneCount)
     const user = useSelector(storeState => storeState.userModule.loggedinUser)
 
     function onLogout() {
@@ -21,25 +21,25 @@ export function AppHeader() {
             })
     }
 
-    function getFinishedTodos() {
-        // const doneTodo = todos.reduce((acc, todo) => {
-        //     if (todo.isDone) acc++
+    function getFinishedContacts() {
+        // const doneContact = contacts.reduce((acc, contact) => {
+        //     if (contact.isDone) acc++
         //     return acc
         // }, 0)
-        if (!todoCount) return 0
-        return (doneCount / todoCount) * 100
+        if (!contactCount) return 0
+        return (doneCount / contactCount) * 100
     }
 
-    const progress = getFinishedTodos().toFixed(2);
+    const progress = getFinishedContacts().toFixed(2);
 
     return (
         <header className="app-header">
             <nav>
                 <NavLink to="/">Home</NavLink> |
-                <NavLink to="/todo">Todos</NavLink> |
+                <NavLink to="/contact">Contacts</NavLink> |
                 <NavLink to="/about">About</NavLink> |
             </nav>
-            <h1>Todos App</h1>
+            <h1>Contacts App</h1>
             {user && (
                 <section className="user-info">
                     <h3>

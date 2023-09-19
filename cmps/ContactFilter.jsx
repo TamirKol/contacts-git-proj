@@ -2,7 +2,7 @@ import { utilService } from "../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
 
-export function TodoFilter({ filterBy, onSetFilterBy }) {
+export function ContactFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
 
@@ -26,7 +26,7 @@ export function TodoFilter({ filterBy, onSetFilterBy }) {
     const { txt, isDone, pageIdx } = filterByToEdit
 
     return (
-        <section className="todo-filter">
+        <section className="contact-filter">
             <form onSubmit={onSubmitFilter}>
                 <div className="filter-input-wrapper">
                     <input

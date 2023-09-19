@@ -1,14 +1,14 @@
-.todo-list {
+.contact-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 }
 
-.todo-list ul {
+.contact-list ul {
     padding: 0;
 }
 
-.todo-list li {
+.contact-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;

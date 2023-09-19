@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function TodoSort({ sortBy, setSortBy }) {
+export function ContactSort({ sortBy, setSortBy }) {
 
     const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy })
 
@@ -22,7 +22,7 @@ export function TodoSort({ sortBy, setSortBy }) {
     }
 
     return (
-        <form className="todo-sort">
+        <form className="contact-sort">
             < select name="type" value={sortByToEdit.type} onChange={handleChange}>
                 <option value="default">Sort by</option>
                 <option value="txt">Text</option>
