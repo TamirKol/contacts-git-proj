@@ -20,7 +20,7 @@ export function ContactIndex() {
     useEffect(() => {
         loadContacts(sortBy)
             .catch(err => {
-                console.log('err:', err)
+                
                 showErrorMsg('Cannot load contacts')
             })
     }, [filterBy, sortBy])

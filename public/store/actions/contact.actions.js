@@ -3,6 +3,7 @@ import { ADD_CONTACT, REMOVE_CONTACT, SET_FILTER_BY, SET_IS_LOADING, SET_CONTACT
 import { store } from '../store.js'
 
 export function loadContacts(sortBy) {
+    console.log('in actions')
     const { filterBy } = store.getState().contactModule
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     return contactService.query(filterBy, sortBy)

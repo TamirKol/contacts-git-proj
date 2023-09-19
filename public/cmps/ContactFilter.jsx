@@ -23,7 +23,7 @@ export function ContactFilter({ filterBy, onSetFilterBy }) {
         onSetFilterBy(filterByToEdit)
     }
 
-    const { txt, isDone, pageIdx } = filterByToEdit
+    const { txt, pageIdx } = filterByToEdit
 
     return (
         <section className="contact-filter">

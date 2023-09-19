@@ -1,15 +1,15 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY = 'contactDB'
-const PAGE_SIZE = 4
-
+// const STORAGE_KEY = 'contactDB'
+// const PAGE_SIZE = 4
+const BASE_URL = '/api/contact/'
 
 export const contactService = {
     query,
-    getById,
-    save,
-    remove,
+    // getById,
+    // save,
+    // remove,
     getEmptyContact,
     getDefaultFilter,
     getDefaultSort
@@ -57,40 +57,14 @@ const contactsList = [
         "desc": "Gezer is a professional in her field, residing in a cozy little town."
     }
 ]
-_createContacs()
+// _createContacs()
 
-function query(filterBy = {}, sortBy) {
-    return storageService.query(STORAGE_KEY)
-        .then(contacts => {
-            const contactsData = {
-                contactCount: contacts.length,
-                doneCount: contacts.filter(contact => contact.isDone).length,
-                contactsToDisplay: []
-            }
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                contacts = contacts.filter(contact =>
-                    regExp.test(contact.firstName) ||
-                    regExp.test(contact.lastName) ||
-                    regExp.test(contact.email) ||
-                    regExp.test(contact.phone)
-                )
-            }
-            if (filterBy.isDone) {
-                if (filterBy.isDone === 'false') {
-                    contacts = contacts.filter(contact => contact.isDone === false)
-                } else {
-                    contacts = contacts.filter(contact => contact.isDone === true)
-                }
-            }
-            contacts = getSortedContacts(contacts, sortBy)
-            if (filterBy.pageIdx != - undefined) {
-                const startIdx = filterBy.pageIdx * PAGE_SIZE
-                contacts = contacts.slice(startIdx, PAGE_SIZE + startIdx)
-            }
-            contactsData.contactsToDisplay = contacts
-            return contactsData
-        })
+
+function query(filterBy, sortBy) {
+    console.log('in public service',filterBy)
+    const filterSortBy = { ...filterBy, ...sortBy }
+    return axios.get(BASE_URL, { params: filterSortBy })
+        .then(res => res.data)
 }
 
 function getById(contactId) {
@@ -109,23 +83,9 @@ function save(contact) {
     }
 }
 
-function getSortedContacts(contactsToDisplay, sortBy) {
-    if (sortBy.type === 'firstName') {
-        contactsToDisplay.sort((b1, b2) => {
-            const title1 = b1.firstName.toLowerCase()
-            const title2 = b2.firstName.toLowerCase()
-            return sortBy.desc * title2.localeCompare(title1)
-        })
-    } else {
-        contactsToDisplay.sort(
-            (b1, b2) => sortBy.desc * (b2[sortBy.type] - b1[sortBy.type])
-        )
-    }
-    return contactsToDisplay
-}
 
 function getDefaultFilter() {
-    return { txt: '', isDone: '', pageIdx: 0 }
+    return { txt: '', pageIdx: 0 }
 }
 
 function getDefaultSort() {
