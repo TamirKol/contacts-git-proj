@@ -74,7 +74,7 @@ export function ContactIndex() {
         <section className='contact-index'>
             {/* <h3>Contacts App</h3> */}
             <main>
-                <ContactFilter
+                {/* <ContactFilter
                     onSetFilterBy={onSetFilterBy}
                     filterBy={filterBy}
                 />
@@ -87,7 +87,7 @@ export function ContactIndex() {
                     />
                     <button>Add</button>
                 </form>
-                <ContactSort sortBy={sortBy} setSortBy={setSortBy} />
+                <ContactSort sortBy={sortBy} setSortBy={setSortBy} /> */}
                 {!isLoading && <ContactList
                     contacts={contacts}
                     onRemoveContact={onRemoveContact}
