@@ -1,5 +1,4 @@
 import { contactService } from "../../services/contact.service.js"
-import { userService } from "../../services/user.service.js"
 import { ADD_CONTACT, REMOVE_CONTACT, SET_FILTER_BY, SET_IS_LOADING, SET_CONTACTS, UPDATE_CONTACT } from "../reducers/contact.reducer.js"
 import { store } from '../store.js'
 
@@ -11,7 +10,7 @@ export function loadContacts(sortBy) {
             store.dispatch({ type: SET_CONTACTS, contacts: contacts.contactsToDisplay, contactCount: contacts.contactCount, doneCount: contacts.doneCount })
         })
         .catch(err => {
-            console.log('car action -> Cannot load contacts', err)
+            console.log('contact action -> Cannot load contacts', err)
             throw err
         })
         .finally(() => {
@@ -25,7 +24,7 @@ export function removeContact(contactId) {
             store.dispatch({ type: REMOVE_CONTACT, contactId })
         })
         .catch(err => {
-            console.log('car action -> Cannot remove contact', err)
+            console.log('contact action -> Cannot remove contact', err)
             throw err
         })
 }
@@ -41,16 +40,10 @@ export function toggleContact(contactToToggle) {
         })
 }
 
-export function addContact(contactToAdd, loggedinUser) {
+export function addContact(contactToAdd) {
     return contactService.save(contactToAdd)
         .then(savedContact => {
             store.dispatch({ type: ADD_CONTACT, contact: savedContact })
-            if (loggedinUser) {
-                userService.addActivity(loggedinUser._id, contactToAdd)
-                    .catch(err => {
-                        console.error('Error adding activity:', err)
-                    })
-            }
         })
         .catch(err => {
             console.log('Cannot add contact', err)
