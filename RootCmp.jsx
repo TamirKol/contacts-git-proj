@@ -15,7 +15,7 @@ export function App() {
                     <main>
                         <Routes>
                             <Route element={<HomePage />} path="/" />
-                            <Route element={<ContactIndex />} path="/contact/index" />
+                            <Route element={<ContactIndex />}  path="/contact/index" />
                             <Route element={<ContactDetails />} path="/contact/:contactId" />
                         </Routes>
                     </main>
