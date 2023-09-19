@@ -5,7 +5,16 @@ import { userService } from './user.service.js'
 const STORAGE_KEY = 'contactDB'
 const PAGE_SIZE = 4
 
-_createContacs()
+
+export const contactService = {
+    query,
+    getById,
+    save,
+    remove,
+    getEmptyContact,
+    getDefaultFilter,
+    getDefaultSort
+}
 
 const contactsList = [
     {
@@ -33,16 +42,7 @@ const contactsList = [
         "desc": "Ella loves to travel and explore new places around the world."
     }
 ]
-
-export const contactService = {
-    query,
-    getById,
-    save,
-    remove,
-    getEmptyContact,
-    getDefaultFilter,
-    getDefaultSort
-}
+_createContacs()
 
 function query(filterBy = {}, sortBy) {
     return storageService.query(STORAGE_KEY)
@@ -126,9 +126,9 @@ function getEmptyContact() {
 
 
 function _createContacs() {
-    let contacts = storageService.loadFromStorage(STORAGE_KEY)
+    let contacts = utilService.loadFromStorage(STORAGE_KEY)
     if (!contacts || !contacts.length) {
         contacts = contactsList
-        storageService.saveToStorage(STORAGE_KEY, contacts)
+        utilService.saveToStorage(STORAGE_KEY, contacts)
     }
 }
