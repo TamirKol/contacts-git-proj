@@ -21,13 +21,15 @@ export function ContactDetails() {
     }, [])
 
     if (!currContact) return <h4>loading</h4>
-    const { _id, txt, isDone } = currContact
+    const { _id, firstName,lastName,email,phone,desc } = currContact
     return (
         <section className="contact-details">
             <div className="contact-data-container">
                 <h1>Id: {_id}</h1>
-                <h1>To Do: {txt}</h1>
-                <h1>Is done?: {isDone ? 'yes' : 'no'}</h1>
+                <h1>Full Name: {firstName+" "+lastName}</h1>
+                <h1>email: {email}</h1>
+                <h1>phone: {phone}</h1>
+                <p>{desc}</p>
                 <button className="back-btn" onClick={() => navigate('/contact')}>
                     Back to contacts
                 </button>
