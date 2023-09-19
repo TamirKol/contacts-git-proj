@@ -39,6 +39,22 @@ const contactsList = [
         "email": "ella.johnson@example.com",
         "phone": "0508765432",
         "desc": "Ella loves to travel and explore new places around the world."
+    },
+    {
+        "_id": 110,
+        "firstName": "Puki",
+        "lastName": "Shmuki",
+        "email": "puki.shmuki@example.com",
+        "phone": "0569476543",
+        "desc": "Puki is a professional in her field, residing in a cozy little town."
+    },
+    {
+        "_id": 106,
+        "firstName": "Gezer",
+        "lastName": "Katom",
+        "email": "gezer.katom@example.com",
+        "phone": "0589874543",
+        "desc": "Gezer is a professional in her field, residing in a cozy little town."
     }
 ]
 _createContacs()

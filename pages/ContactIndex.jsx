@@ -87,7 +87,7 @@ export function ContactIndex() {
                         value={contactToAdd.firstName}
                     />
                 </form> */}
-                <button><Link to={`/contact/edit`}>Add</Link></button>
+                <button><Link to={`/contact/edit`}>Add new contact</Link></button>
                 <ContactSort sortBy={sortBy} setSortBy={setSortBy} />
                 {!isLoading && <ContactList
                     contacts={contacts}
