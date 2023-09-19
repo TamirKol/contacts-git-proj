@@ -31,6 +31,7 @@ export function ContactDetails() {
                 <h1>Full Name: {firstName + " " + lastName}</h1>
                 <h1>email: {email}</h1>
                 <h1>phone: {phone}</h1>
+                
                 <p>{desc}</p>
                 <button className="back-btn" onClick={() => navigate('/contact')}>
                     Back to contacts
