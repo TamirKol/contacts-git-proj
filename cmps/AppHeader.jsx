@@ -3,12 +3,10 @@ const { useSelector } = ReactRedux
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { logout } from '../store/actions/user.actions.js'
-import { LoginSignup } from './LoginSignUp.jsx'
 
 export function AppHeader() {
     const contactCount = useSelector(storeState => storeState.contactModule.contactCount)
     const doneCount = useSelector(storeState => storeState.contactModule.doneCount)
-    const user = useSelector(storeState => storeState.userModule.loggedinUser)
 
     function onLogout() {
         logout()
@@ -40,7 +38,7 @@ export function AppHeader() {
                 <NavLink to="/about">About</NavLink> |
             </nav>
             <h1>Contacts App</h1>
-            {user && (
+            {/* {user && (
                 <section className="user-info">
                     <h3>
                         {user.fullname}, <span>you have finished</span>
@@ -59,7 +57,7 @@ export function AppHeader() {
                 <section className="user-info">
                     <LoginSignup />
                 </section>
-            )}
+            )} */}
         </header>
     );
 }
