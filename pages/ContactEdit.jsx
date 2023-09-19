@@ -26,7 +26,8 @@ export function ContactEdit() {
 
     function handleChange({ target }) {
         const value = target.value
-        setContactToEdit(prevContact => ({ ...prevContact, txt: value }))
+        const field = target.name
+        setContactToEdit(prevContact => ({ ...prevContact, [field]: value }))
     }
 
     function onSaveContact(ev) {
@@ -39,8 +40,7 @@ export function ContactEdit() {
             })
     }
 
-    const { txt } = contactToEdit
-
+    const { _id, firstName, lastName, email, phone, desc } = contactToEdit
     return (
         <section className="contact-edit">
             <h2>Edit Contact</h2>
@@ -48,7 +48,37 @@ export function ContactEdit() {
             <form onSubmit={onSaveContact}>
                 <input
                     type="text"
-                    value={txt}
+                    placeholder="firstName"
+                    name="firstName"
+                    value={firstName}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    placeholder="lastName"
+                    name="lastName"
+                    value={lastName}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    placeholder="email"
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    placeholder="phone"
+                    name="phone"
+                    value={phone}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    placeholder="description"
+                    name="description"
+                    value={desc}
                     onChange={handleChange}
                 />
                 <button>Save</button>
