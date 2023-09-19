@@ -33,7 +33,7 @@ export function ContactDetails() {
                 <h1>phone: {phone}</h1>
                 <p>{desc}</p>
                 <button className="back-btn" onClick={() => navigate('/contact')}>
-                    Back to contacts
+                    Back to contacts!
                 </button>
             </div>
 
