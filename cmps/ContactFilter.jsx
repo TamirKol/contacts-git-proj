@@ -39,11 +39,11 @@ export function ContactFilter({ filterBy, onSetFilterBy }) {
                     <div className="fa search"></div>
                 </div>
             </form>
-            <select name="isDone" value={isDone} onChange={handleChange}>
+            {/* <select name="isDone" value={isDone} onChange={handleChange}>
                 <option value="">All</option>
                 <option value="false">Active</option>
                 <option value="true">Done</option>
-            </select>
+            </select> */}
             <label >
                 Page: 
                 <input type="number"

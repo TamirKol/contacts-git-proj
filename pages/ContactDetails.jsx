@@ -11,7 +11,7 @@ export function ContactDetails() {
     const [currContact, setCurrContact] = useState(null)
 
     useEffect(() => {
-        contactService.getById(params.id)
+        contactService.getById(+params.contactId)
             .then(contact => {
                 if (!contact) return navigate('/contact')
                 setCurrContact(contact)

@@ -4,6 +4,7 @@ const { Link } = ReactRouterDOM
 
 export function ContactList({ contacts, onRemoveContact, onToggleContact }) {
     // if (!contacts.length) return <p>No contacts to show..</p>
+   
     return (
         <section className="contact-list">
             <ul>

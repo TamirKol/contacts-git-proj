@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 const { useSelector, useDispatch } = ReactRedux
+const { Link } = ReactRouterDOM
 
 import { addContact, loadContacts, removeContact, setFilterBy, toggleContact } from '../store/actions/contact.actions.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -74,20 +75,20 @@ export function ContactIndex() {
         <section className='contact-index'>
             {/* <h3>Contacts App</h3> */}
             <main>
-                {/* <ContactFilter
+                <ContactFilter
                     onSetFilterBy={onSetFilterBy}
                     filterBy={filterBy}
                 />
-                <form onSubmit={onAddContact}>
+                {/* <form onSubmit={onAddContact}>
                     <input
                         type="text"
                         placeholder="What needs to be done?"
                         onChange={handleChange}
-                        value={contactToAdd.txt}
+                        value={contactToAdd.firstName}
                     />
-                    <button>Add</button>
-                </form>
-                <ContactSort sortBy={sortBy} setSortBy={setSortBy} /> */}
+                </form> */}
+                <button><Link to={`/contact/edit`}>Add</Link></button>
+                <ContactSort sortBy={sortBy} setSortBy={setSortBy} />
                 {!isLoading && <ContactList
                     contacts={contacts}
                     onRemoveContact={onRemoveContact}

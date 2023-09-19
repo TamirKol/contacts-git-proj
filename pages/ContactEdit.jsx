@@ -1,5 +1,5 @@
 import { contactService } from "../services/contact.service.js"
-import { showErrorMsg } from "../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 const { useEffect, useState } = React
 const { useParams, useNavigate } = ReactRouterDOM
@@ -9,13 +9,14 @@ export function ContactEdit() {
     const [contactToEdit, setContactToEdit] = useState(contactService.getEmptyContact())
     const navigate = useNavigate()
     const params = useParams()
+    console.log('params:', params)
 
     useEffect(() => {
         if (params.contactId) loadContact()
     }, [])
 
     function loadContact() {
-        contactService.getById(params.contactId)
+        contactService.getById(+params.contactId)
             .then(setContactToEdit)
             .catch(err => {
                 console.log('Had issued in contact edit:', err);
@@ -32,52 +33,54 @@ export function ContactEdit() {
 
     function onSaveContact(ev) {
         ev.preventDefault()
-        contactToEdit.isDone = false
         contactService.save(contactToEdit)
-            .then(() => navigate('/contact'))
+            .then(() => {
+                showSuccessMsg('Contact added!')
+                navigate('/contact')
+        })
             .catch(err => {
                 showErrorMsg('Cannot save contact', err)
             })
     }
 
-    const { _id, firstName, lastName, email, phone, desc } = contactToEdit
+    const { firstName, lastName, email, phone, desc } = contactToEdit
     return (
         <section className="contact-edit">
-            <h2>Edit Contact</h2>
+            {params.contactId ? <h2>Edit Contact</h2> : <h2>Add Contact</h2>}
 
             <form onSubmit={onSaveContact}>
                 <input
                     type="text"
-                    placeholder="firstName"
+                    placeholder="First name"
                     name="firstName"
                     value={firstName}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    placeholder="lastName"
+                    placeholder="Last name"
                     name="lastName"
                     value={lastName}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    placeholder="email"
+                    placeholder="Email"
                     name="email"
                     value={email}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    placeholder="phone"
+                    placeholder="Phone"
                     name="phone"
                     value={phone}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
-                    placeholder="description"
-                    name="description"
+                    placeholder="Description"
+                    name="desc"
                     value={desc}
                     onChange={handleChange}
                 />

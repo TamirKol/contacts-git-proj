@@ -17,7 +17,7 @@ export const contactService = {
 
 const contactsList = [
     {
-        "id": 101,
+        "_id": 101,
         "firstName": "John",
         "lastName": "Doe",
         "email": "johndoe@example.com",
@@ -25,7 +25,7 @@ const contactsList = [
         "desc": "John is someone who does this and that, lives here and there."
     },
     {
-        "id": 102,
+        "_id": 102,
         "firstName": "Alice",
         "lastName": "Smith",
         "email": "alice.smith@example.com",
@@ -33,7 +33,7 @@ const contactsList = [
         "desc": "Alice is a professional in her field, residing in a cozy little town."
     },
     {
-        "id": 104,
+        "_id": 104,
         "firstName": "Ella",
         "lastName": "Johnson",
         "email": "ella.johnson@example.com",
@@ -53,7 +53,12 @@ function query(filterBy = {}, sortBy) {
             }
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                contacts = contacts.filter(contact => regExp.test(contact.txt))
+                contacts = contacts.filter(contact =>
+                    regExp.test(contact.firstName) ||
+                    regExp.test(contact.lastName) ||
+                    regExp.test(contact.email) ||
+                    regExp.test(contact.phone)
+                )
             }
             if (filterBy.isDone) {
                 if (filterBy.isDone === 'false') {
@@ -84,16 +89,15 @@ function save(contact) {
     if (contact._id) {
         return storageService.put(STORAGE_KEY, contact)
     } else {
-        contact.owner = userService.getLoggedinUser()
         return storageService.post(STORAGE_KEY, contact)
     }
 }
 
 function getSortedContacts(contactsToDisplay, sortBy) {
-    if (sortBy.type === 'txt') {
+    if (sortBy.type === 'firstName') {
         contactsToDisplay.sort((b1, b2) => {
-            const title1 = b1.txt.toLowerCase()
-            const title2 = b2.txt.toLowerCase()
+            const title1 = b1.firstName.toLowerCase()
+            const title2 = b2.firstName.toLowerCase()
             return sortBy.desc * title2.localeCompare(title1)
         })
     } else {

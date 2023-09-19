@@ -25,8 +25,8 @@ export function ContactSort({ sortBy, setSortBy }) {
         <form className="contact-sort">
             < select name="type" value={sortByToEdit.type} onChange={handleChange}>
                 <option value="default">Sort by</option>
-                <option value="txt">Text</option>
-                <option value="createdAt">Date</option>
+                <option value="firstName">Text</option>
+                <option value="phone">Phone</option>
             </select >
             <label>
                 <input
