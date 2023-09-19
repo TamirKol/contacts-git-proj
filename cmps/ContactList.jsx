@@ -21,7 +21,7 @@ export function ContactList({ contacts, onRemoveContact, onToggleContact }) {
                             </div>
                         </li>)
 
-                    : <p>No contacts to show..</p>}
+                    : <p>No contacts to show...</p>}
 
             </ul>
         </section>
