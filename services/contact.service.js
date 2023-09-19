@@ -17,7 +17,7 @@ export const contactService = {
 
 const contactsList = [
     {
-        "id": 101,
+        "_id": 101,
         "firstName": "John",
         "lastName": "Doe",
         "email": "johndoe@example.com",
@@ -25,7 +25,7 @@ const contactsList = [
         "desc": "John is someone who does this and that, lives here and there."
     },
     {
-        "id": 102,
+        "_id": 102,
         "firstName": "Alice",
         "lastName": "Smith",
         "email": "alice.smith@example.com",
@@ -33,7 +33,7 @@ const contactsList = [
         "desc": "Alice is a professional in her field, residing in a cozy little town."
     },
     {
-        "id": 104,
+        "_id": 104,
         "firstName": "Ella",
         "lastName": "Johnson",
         "email": "ella.johnson@example.com",

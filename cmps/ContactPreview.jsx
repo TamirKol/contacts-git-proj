@@ -1,4 +1,5 @@
 export function ContactPreview({ contact, onToggleContact }) {
+    console.log(contact);
     return (
         <article
             className="contact-preview"

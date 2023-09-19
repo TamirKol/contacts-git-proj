@@ -2,7 +2,6 @@ const { NavLink } = ReactRouterDOM
 const { useSelector } = ReactRedux
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { logout } from '../store/actions/user.actions.js'
 
 export function AppHeader() {
     const contactCount = useSelector(storeState => storeState.contactModule.contactCount)

@@ -15,7 +15,6 @@ export function ContactIndex() {
     const isLoading = useSelector(storeState => storeState.contactModule.isLoading)
     const [contactToAdd, setContactToAdd] = useState(contactService.getEmptyContact())
     const [sortBy, setSortBy] = useState({ type: '', desc: -1 })
-
     useEffect(() => {
         loadContacts(sortBy)
             .catch(err => {
