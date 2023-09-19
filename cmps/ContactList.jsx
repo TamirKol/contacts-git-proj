@@ -15,6 +15,7 @@ export function ContactList({ contacts, onRemoveContact, onToggleContact }) {
                                 onToggleContact={onToggleContact}
                             />
                             <div>
+                                
                                 <button><Link to={`/contact/edit/${contact._id}`}>Edit</Link></button>
                                 <button><Link to={`/contact/${contact._id}`}>Details</Link></button>
                                 <button onClick={() => onRemoveContact(contact._id)}>Remove</button>
