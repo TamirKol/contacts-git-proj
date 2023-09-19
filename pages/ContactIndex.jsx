@@ -12,7 +12,6 @@ export function ContactIndex() {
 
     const contacts = useSelector(storeState => storeState.contactModule.contacts)
     const filterBy = useSelector(storeState => storeState.contactModule.filterBy)
-    const loggedinUser = useSelector(storeState => storeState.userModule.loggedinUser)
     const isLoading = useSelector(storeState => storeState.contactModule.isLoading)
     const [contactToAdd, setContactToAdd] = useState(contactService.getEmptyContact())
     const [sortBy, setSortBy] = useState({ type: '', desc: -1 })
@@ -60,7 +59,7 @@ export function ContactIndex() {
 
     function onAddContact(ev) {
         ev.preventDefault()
-        addContact(contactToAdd, loggedinUser)
+        addContact(contactToAdd)
             .then(() => {
                 showSuccessMsg('Contact added')
                 setContactToAdd(contactService.getEmptyContact())
@@ -84,7 +83,7 @@ export function ContactIndex() {
                         type="text"
                         placeholder="What needs to be done?"
                         onChange={handleChange}
-                    value={contactToAdd.txt}
+                        value={contactToAdd.txt}
                     />
                     <button>Add</button>
                 </form>
