@@ -10,8 +10,8 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
     contacts: [],
-    contactCount: 0,
-    doneCount: 0,
+    // contactCount: 0,
+    // doneCount: 0,
     filterBy: contactService.getDefaultFilter(),
     isLoading: false
 }
@@ -23,7 +23,7 @@ export function contactReducer(state = initialState, action = {}) {
     // Contacts
     switch (action.type) {
         case SET_CONTACTS:
-            return { ...state, contacts: action.contacts, contactCount: action.contactCount, doneCount: action.doneCount }
+            return { ...state, contacts: action.contacts }
 
         case REMOVE_CONTACT:
             contacts = state.contacts.filter(contact => contact._id !== action.contactId)

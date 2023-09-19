@@ -2,21 +2,20 @@ import { contactService } from "../../services/contact.service.js"
 import { ADD_CONTACT, REMOVE_CONTACT, SET_FILTER_BY, SET_IS_LOADING, SET_CONTACTS, UPDATE_CONTACT } from "../reducers/contact.reducer.js"
 import { store } from '../store.js'
 
-export function loadContacts(sortBy) {
-    console.log('in actions')
+export function loadContacts() {
     const { filterBy } = store.getState().contactModule
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return contactService.query(filterBy, sortBy)
+    return contactService.query(filterBy)
         .then(contacts => {
-            store.dispatch({ type: SET_CONTACTS, contacts: contacts.contactsToDisplay, contactCount: contacts.contactCount, doneCount: contacts.doneCount })
+            store.dispatch({ type: SET_CONTACTS, contacts })
         })
         .catch(err => {
             console.log('contact action -> Cannot load contacts', err)
             throw err
         })
-        .finally(() => {
-            store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-        })
+    .finally(() => {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    })
 }
 
 export function removeContact(contactId) {

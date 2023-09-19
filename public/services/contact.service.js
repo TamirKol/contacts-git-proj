@@ -61,9 +61,8 @@ const contactsList = [
 
 
 function query(filterBy, sortBy) {
-    console.log('in public service',filterBy)
-    const filterSortBy = { ...filterBy, ...sortBy }
-    return axios.get(BASE_URL, { params: filterSortBy })
+    // const filterSortBy = { ...filterBy, ...sortBy }
+    return axios.get(BASE_URL)
         .then(res => res.data)
 }
 

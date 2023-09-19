@@ -16,11 +16,11 @@ export function ContactIndex() {
     const isLoading = useSelector(storeState => storeState.contactModule.isLoading)
     const [contactToAdd, setContactToAdd] = useState(contactService.getEmptyContact())
     const [sortBy, setSortBy] = useState({ type: '', desc: -1 })
-
+    // console.log('contacts:', contacts)
     useEffect(() => {
         loadContacts(sortBy)
             .catch(err => {
-                
+                console.log('err:', err)
                 showErrorMsg('Cannot load contacts')
             })
     }, [filterBy, sortBy])
