@@ -37,7 +37,7 @@ export function AppHeader() {
                 <NavLink to="/contact">Contacts</NavLink> |
                 <NavLink to="/about">About</NavLink> |
             </nav>
-            <h1>Contacts App</h1>
+            <h1>Contacts App!</h1>
             {/* {user && (
                 <section className="user-info">
                     <h3>
